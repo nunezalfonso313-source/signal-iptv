@@ -569,7 +569,7 @@ function loadFromText(text) {
 async function loadFromUrl(url) {
   toast('Descargando lista…');
   try {
-    const proxy = 'https://corsproxy.io/?' + encodeURIComponent(url);
+    const proxy = 'https://cors-proxy.nunezalfonso313.workers.dev/?url=' + encodeURIComponent(url);
     const res = await fetch(proxy);
     if (!res.ok) throw new Error();
     const text = await res.text();
