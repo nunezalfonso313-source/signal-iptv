@@ -293,6 +293,7 @@
         <div class="np-group" id="np-group"></div>
       </div>
       <div class="np-live"><div class="live-dot"></div> EN VIVO</div>
+      <button class="btn" id="fs-btn" style="margin-left:8px;font-size:16px;padding:4px 10px;" title="Pantalla completa">⛶</button>
     </div>
     <div class="error-msg" id="err-msg">Error al cargar el stream</div>
   </div>
@@ -655,6 +656,16 @@ document.addEventListener('keydown', e => {
     const idx = visible.findIndex(c => c.url === currentChannel.url);
     const next = e.key === 'ArrowDown' ? idx + 1 : idx - 1;
     if (next >= 0 && next < visible.length) playChannel(visible[next]);
+  }
+});
+
+// ── FULLSCREEN ──
+document.getElementById('fs-btn').addEventListener('click', () => {
+  const el = document.getElementById('player-area');
+  if (!document.fullscreenElement) {
+    (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen).call(el);
+  } else {
+    (document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen).call(document);
   }
 });
 
