@@ -676,6 +676,9 @@ document.getElementById('fs-btn').addEventListener('click', () => {
     channels = parseM3U(saved);
     renderGroups();
     renderChannels();
+  } else {
+    const savedUrl = localStorage.getItem('iptv_m3u_url');
+    if (savedUrl) loadFromUrl(savedUrl);
   }
   const epgUrl = localStorage.getItem('iptv_epg_url');
   if (epgUrl) {
