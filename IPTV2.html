@@ -569,7 +569,8 @@ function loadFromText(text) {
 async function loadFromUrl(url) {
   toast('Descargando lista…');
   try {
-    const res = await fetch(url);
+    const proxy = 'https://corsproxy.io/?' + encodeURIComponent(url);
+    const res = await fetch(proxy);
     if (!res.ok) throw new Error();
     const text = await res.text();
     localStorage.setItem('iptv_m3u_url', url);
